@@ -1,0 +1,2 @@
+target/*
+!target/scala-2.11/*.jar

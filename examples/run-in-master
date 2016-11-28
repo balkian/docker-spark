@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec -it dockerspark_master_1 /tmp/examples/run "$@"

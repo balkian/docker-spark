@@ -1,0 +1,9 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+example_class=$1
+shift
+$SPARK_HOME/bin/spark-submit \
+  --class $example_class \
+  --master local[4] \
+  $DIR/target/scala-2.11/examples-sibd_2.11-0.1.jar \
+  "$@"

@@ -1,0 +1,3 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+java -cp $SPARK_HOME/jars/scala-library-2.11.8.jar:$DIR/target/scala-2.11/examples-sibd_2.11-0.1.jar:. "$@"

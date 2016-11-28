@@ -23,7 +23,8 @@ master:
   volumes:
     - ./conf/master:/conf
     - ./data:/tmp/data
-
+    - ./examples:/tmp/examples
+    
 worker:
   image: gettyimages/spark
   command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
