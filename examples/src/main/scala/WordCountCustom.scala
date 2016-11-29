@@ -56,7 +56,7 @@ object WordCountCustom {
     // Replication necessary in distributed scenario for fault tolerance.
     val lines = ssc.socketTextStream(args(0), args(1).toInt, StorageLevel.MEMORY_AND_DISK_SER)
     val words = lines.flatMap(_.split(" "))
-    val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _).transform(rdd=>rdd.sortBy(_._2))
+    val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _).transform(rdd=>rdd.sortBy(-_._2))
     wordCounts.print()
     ssc.start()
     ssc.awaitTermination()

@@ -59,8 +59,9 @@ object randomserver {
 
 case class ServerThread(socket: Socket, waitTime: Int = 1000000) extends Thread("ServerThread") {
 
-  val vocabulary = List("hello", "world", "SIBD", "rules")
-  val others = List(" ", "\n")
+  val students = List("Alice", "Bob", "Charles", "Daisy", "Eve", "Frank", "George", "Hans", "Irene", "John", "Kevin")
+  val topics = List("Scala", "spark", "java", "big data")
+  val actions = List("asks", "knows")
 
   override def run(): Unit = {
     val rand = new Random(System.currentTimeMillis());
@@ -68,12 +69,12 @@ case class ServerThread(socket: Socket, waitTime: Int = 1000000) extends Thread(
       val out = new DataOutputStream(socket.getOutputStream());
 
       while (true) {
-        val word = vocabulary(rand.nextInt(vocabulary.length));
-        val other = others(rand.nextInt(others.length));
-        out.writeChars(word)
-        out.writeChars(other)
-        print(word)
-        print(other)
+        val name = students(rand.nextInt(students.length));
+        val topic = topics(rand.nextInt(topics.length));
+        val action = actions(rand.nextInt(actions.length));
+        val message = name+" "+action+" about "+topic+"\n"
+        out.writeChars(message)
+        print(message)
         Thread.sleep(waitTime)
       }
 
